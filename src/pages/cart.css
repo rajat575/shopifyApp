@@ -1,0 +1,101 @@
+body {
+  overflow-x: hidden;
+}
+/* .cart {
+  text-align: center;
+}
+.productalign {
+  margin-left: 500px;
+  border: black;
+  border-style: solid;
+  max-width: 500px;
+}
+.center {
+  margin-top: 20px;
+  text-align: center;
+  border: black;
+  border-style: solid;
+  max-width: 300px;
+  margin-left: 100px;
+}
+.center h3 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.center h2 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.align {
+  text-align: center;
+} */
+/* .cart {
+  text-align: center;
+} */
+.cartimg {
+  height: 100px;
+  width: 150px;
+}
+table {
+  margin-left: 75px;
+  /* border: black; */
+  /* border-style: solid; */
+}
+.btnhw {
+  width: 20px;
+}
+.inphw {
+  width: 30px;
+}
+td {
+  /* border: solid black 1px; */
+  min-width: 270px;
+  align-items: left;
+  text-align: left;
+}
+/* .productalign {
+  text-align: center;
+} */
+th {
+  /* border: solid black 1px; */
+  min-width: 270px;
+  text-align: left;
+  align-items: left;
+}
+.TotalPrice {
+  text-align: center;
+  padding-left: 430px;
+  border: solid black 2px;
+  /* max-width: 1028px; */
+  /* margin-left: 75px;
+  margin-right: 66px; */
+}
+.align {
+  text-align: center;
+}
+.toptable {
+  padding-right: 3px;
+  margin-left: 75px;
+  /* border: black; */
+  /* border-style: solid; */
+}
+.btninc {
+  width: 20px;
+}
+.inp {
+  width: 40px;
+}
+.quantchnge {
+  text-align: left;
+  /* padding-left: 0px;
+  padding-right: 0px; */
+  margin-left: 5px;
+  width: 130px;
+}
+.checkout {
+  border-radius: 5px;
+  width: 150px;
+}
+.rmdis {
+  width: 3%;
+}

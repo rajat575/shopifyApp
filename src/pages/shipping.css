@@ -1,0 +1,79 @@
+.payment-btn {
+  margin-top: 30px;
+  width: 180px;
+  height: 30px;
+  color: aliceblue;
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(105, 104, 104);
+}
+.shippingMethod {
+  margin-top: 20px;
+  /* margin-left: 500px; */
+  /* border: black; */
+  /* border-style: solid; */
+  /* border-width: 1px; */
+  max-width: 800px;
+}
+.shippingHeader {
+  margin-top: 20px;
+  /* margin-left: 500px; */
+}
+.middle {
+  padding: 10px;
+  margin-top: 30px;
+  border: rgb(207, 207, 207) 2px solid;
+  border-radius: 18px;
+  margin-left: 200px;
+  max-width: 800px;
+}
+.para {
+  text-align: justify;
+}
+.headership {
+  /* margin-top: 80px; */
+  /* margin-left: 200px; */
+  /* border: black solid 2px; */
+  margin-bottom: 0px;
+  max-width: 800px;
+}
+.paracenter {
+  /* margin-left: 200px; */
+  margin-top: 0px;
+  /* border: solid black 2px; */
+  max-width: 800px;
+  text-align: center;
+}
+.container {
+  padding: 10px;
+  margin-top: 50px;
+  border: rgb(207, 207, 207) 2px solid;
+  border-radius: 18px;
+  margin-left: 200px;
+  max-width: 800px;
+  margin-bottom: 50px;
+}
+.shippingHR {
+  width: 100%;
+  border-radius: 0%;
+  border: none;
+
+  background-color: rgb(207, 207, 207);
+  height: 1px;
+}
+.storeName {
+  margin-top: 25px;
+  margin-left: 200px;
+  margin-bottom: 0%;
+}
+/* .headerHR {
+  width: 100%;
+  border-radius: 0%;
+  border: none;
+
+  background-color: rgb(207, 207, 207);
+  height: 1px;
+} */
+.spansize {
+  font-size: 18px;
+}

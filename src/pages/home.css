@@ -1,0 +1,62 @@
+.banner {
+  margin-top: 0;
+  height: 650px;
+  width: 100%;
+}
+body {
+  overflow-x: hidden;
+}
+.imageset {
+  margin: 7px 5px 0px 1px;
+  height: 200px;
+  width: 250px;
+}
+.card {
+  margin: 0px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  border: white;
+  background-color: rgb(253, 253, 253);
+  border-style: solid;
+  border-width: 1px;
+}
+.cards {
+  margin: 40px 20px 40px 80px;
+  text-align: center;
+  border: black;
+  border-radius: 18px;
+  background-color: rgb(253, 253, 253);
+  max-width: 400px;
+  border-style: solid;
+  border-width: 2px;
+}
+p {
+  color: black;
+}
+.homeheader {
+  /* font-family: "Sacramento", cursive; */
+  font-size: 25px;
+  margin-top: 80px;
+  text-align: center;
+}
+.homeheader h1 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.homeheader hr {
+  /* margin-bottom: 0px;
+  margin-top: 0px; */
+  height: 1px;
+  width: 40%;
+  border-radius: 0px;
+  color: grey;
+  background-color: grey;
+}
+.store {
+  font-size: 30px;
+}
+.x {
+  font-weight: bolder;
+}

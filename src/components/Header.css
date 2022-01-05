@@ -1,0 +1,80 @@
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+.navbar {
+  background-color: #244761;
+  width: 100%;
+}
+
+.navlink {
+  list-style: none;
+  display: inline-block;
+  margin-left: 20px;
+  font-size: 25px;
+}
+.navlinks {
+  font-family: "Times New Roman", Times, serif;
+  text-decoration: none;
+  color: white;
+  border-radius: 5%;
+  border: #244761;
+  border-style: solid;
+  border-width: 1px;
+  padding: 2px 8px;
+}
+.brandlink {
+  margin-top: 0px;
+  color: white;
+  text-decoration: none;
+  font-family: "Sacramento", cursive;
+  font-size: 30px;
+}
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 2px 8px 16px rgb(73, 71, 71);
+}
+#catalog:hover .dropdown {
+  display: block;
+  font-size: 20px;
+}
+.navlinks:hover {
+  border-radius: 5%;
+  border: white;
+  border-style: solid;
+  border-width: 1px;
+  padding: 2px 8px;
+}
+.inputheader {
+  border-radius: 8px;
+  padding-top: 5px;
+  line-height: 20px;
+  margin-left: 300px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.btnpad {
+  border-radius: 5px;
+  padding-top: 5px;
+  height: 30px;
+}
+
+.imgsize {
+  position: absolute;
+  top: 30px;
+  height: 40px;
+  width: 40px;
+}
+.collLink {
+  text-decoration: none;
+}
+.hovercolor:hover {
+  background-color: lightblue;
+}
+.pading {
+  padding: 5px;
+}

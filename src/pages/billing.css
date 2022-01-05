@@ -1,0 +1,23 @@
+.centerdata {
+  margin-left: 595px;
+}
+.buttonedit {
+  margin-top: 20px;
+  width: 200px;
+  height: 30px;
+}
+.inputlength {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 350px;
+  height: 30px;
+}
+.shipad {
+  text-align: center;
+  margin-top: 50px;
+}
+.hrbill {
+  border-radius: 0%;
+  border: none;
+  width: 22%;
+}

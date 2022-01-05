@@ -1,0 +1,21 @@
+.footer {
+  height: 200px;
+  background-color: #244761;
+}
+.footer-back {
+  padding-top: 50px;
+  text-align: center;
+
+  margin-bottom: 0;
+  padding-bottom: 20px;
+  text-decoration: none;
+}
+.footer-links {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 20px 10px;
+}
+.copy {
+  color: white;
+}

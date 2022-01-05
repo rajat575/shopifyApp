@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ShopifyProvider from './context'
 
 ReactDOM.render(
   <React.StrictMode>
+    <ShopifyProvider>
     <App />
+    </ShopifyProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

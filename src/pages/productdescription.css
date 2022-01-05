@@ -1,0 +1,36 @@
+.desc {
+  margin-top: 40px;
+  text-align: center;
+}
+
+hr {
+  width: 30rem;
+  border-radius: 50%;
+  border-style: solid;
+  height: 2px;
+  background-color: black;
+  color: black;
+}
+.prodDesc {
+  border: black;
+  border-width: 2px;
+  border-style: solid;
+  margin: 40px 200px 20px;
+  text-align: center;
+  min-height: 500px;
+}
+.setheight {
+  height: 300px;
+  width: 400px;
+}
+.desclink {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  margin-bottom: 20px;
+  width: 100px;
+  height: 25px;
+  font-size: 15px;
+}
