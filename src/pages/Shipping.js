@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { shopContext } from "../context";
 import "./shipping.css";
@@ -6,17 +6,24 @@ import "./shipping.css";
 const Shipping = () => {
   const letsGo = useNavigate();
 
-  const { cart} = useContext(shopContext);
+  const { cart,shippingmethod,getShippingMethod} = useContext(shopContext);
 
+  useEffect(() => {
+    getShippingMethod(localStorage.cart_id);
+    return () => {
+    }
+  }, [])
   
 
   const nextpage = async () => {
     letsGo("/paymentpage");
   };
 
+
   return (
     <div>
       <h1 className="storeName">Shipping Page</h1>
+      {console.log(shippingmethod)}
       
       <div className="middle">
         <h2 className="headership">Ship To:</h2>
@@ -30,50 +37,30 @@ const Shipping = () => {
       </div>
       <div className="container">
       <h2 className="shippingHeader">Shipping Methods</h2>
-      {/* <hr className="shippingHR" /> */}
+      <hr className="shippingHR" />
+      
       {console.log(cart)}
       
-      
-      <form className="shippingMethod">
+      <div>
+      {shippingmethod?.data?.node?.availableShippingRates?.shippingRates?.map(method=>( <form className="shippingMethod">
         <div>
           <input
-            type="radio"
+            type="checkbox"
             name="shipping method"
-            onChange={() => ("DHL Express Worldwide")}
           />
-          <span className="spansize" >DHL Express Worldwide</span>
+          <span className="spansize" >{method?.title} <span className="rightalign"> {cart?.currencyCode} : </span> <span>{method?.priceV2?.amount}</span> </span>
+
           <hr className="shippingHR" />
         </div>
-        <div>
-          <input
-            type="radio"
-            name="shipping method"
-            onChange={() => ("USPS")}
-          />
-          <span className="spansize">USPS First Class Package International</span>
-          <hr className="shippingHR" />
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="shipping method"
-            onChange={() => ("USPS")}
-          />
-          <span className="spansize">USPS Priority Mail International</span>
-          <hr className="shippingHR" />
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="shipping method"
-            onChange={() =>("USPS")}
-          />
-          <span className="spansize">USPS Priority Mail Express International</span>
-        </div>
-        <button onClick={nextpage} type="submit" className="payment-btn">
+        
+        
+        
+      </form>))  }
+     
+      <button onClick={nextpage} type="submit" className="payment-btn">
           Continue to payment
         </button>
-      </form>
+      </div>
       </div>
     </div>
   );

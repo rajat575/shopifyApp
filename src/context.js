@@ -33,8 +33,10 @@ export class ShopifyProvider extends Component {
     productdescri: {},
     cart: {},
     collhandle: [],
-    query: [],
-    discode:{}
+    query: {},
+    discode:{},
+    shippingmethod:{}
+
   };
 
   componentDidMount() {
@@ -48,7 +50,8 @@ export class ShopifyProvider extends Component {
       this.createCart();
     }
     // this.testGraphQL()
-    this.testApollo();
+    // this.testApollo();
+    // this.getShippingMethod()
     // this.testShippingRates()
   }
 
@@ -206,16 +209,78 @@ export class ShopifyProvider extends Component {
     console.log("*******************");
   };
 
-  testShippingRates = async() => {
+
+
+
+  getShippingMethod = async() => {
+
     const query = gql`
-    
-    `;
-    const bag = await apolloClient.query({ query: query });
-    this.setState({ query: bag });
-    console.log("*******************");
-    console.log(bag);
-    console.log("*******************");
-  };
+
+    query checkout($checkoutid: ID!){
+
+        node(id: $checkoutid) {
+
+          ... on Checkout {
+
+              totalTax
+
+              taxesIncluded
+
+              taxExempt
+
+              subtotalPrice
+
+              totalPrice
+
+              email
+
+              createdAt
+
+              requiresShipping
+
+              availableShippingRates {
+
+                ready
+
+                shippingRates {
+
+                  handle
+
+                  priceV2 {
+
+                    amount
+
+                  }
+
+                  title
+
+                }
+
+              }
+
+          }
+
+      }
+
+    }
+
+  `
+
+   const cart=await apolloClient.query({query: query, variables: {
+
+    checkoutid: localStorage.cart_id
+
+  }}) ;
+
+      console.log("*******checkoutid*******");
+
+      this.setState({shippingmethod:cart})
+
+      console.log("*******************");
+
+     
+
+  }
 
   adddiscount=async(cartId,discountCode)=>{
     const cart= await client.checkout.addDiscount(cartId,discountCode )
@@ -242,9 +307,9 @@ export class ShopifyProvider extends Component {
           updatequantity: this.updatequantity,
           updateaddress: this.updateaddress,
           testApollo: this.testApollo,
-          testShippingRates: this.testShippingRates,
           adddiscount:this.adddiscount,
-          removediscount:this.removediscount
+          removediscount:this.removediscount,
+          getShippingMethod:this.getShippingMethod
         }}
       >
         {this.props.children}
