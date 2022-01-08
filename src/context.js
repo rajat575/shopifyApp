@@ -35,7 +35,8 @@ export class ShopifyProvider extends Component {
     collhandle: [],
     query: {},
     discode:{},
-    shippingmethod:{}
+    shippingmethod:{},
+    shippingPrice:{}
 
   };
 
@@ -292,6 +293,15 @@ export class ShopifyProvider extends Component {
     const cart =await client.checkout.removeDiscount(cartId);
     this.setState({cart:cart})
   }
+
+  setPriceShipping=(shippingPrice)=>{
+    this.setState({shippingPrice:shippingPrice})
+  }
+
+  
+
+
+
   render() {
     return (
       <shopContext.Provider
@@ -309,7 +319,8 @@ export class ShopifyProvider extends Component {
           testApollo: this.testApollo,
           adddiscount:this.adddiscount,
           removediscount:this.removediscount,
-          getShippingMethod:this.getShippingMethod
+          getShippingMethod:this.getShippingMethod,
+          setPriceShipping:this.setPriceShipping
         }}
       >
         {this.props.children}
