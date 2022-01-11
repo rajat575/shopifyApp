@@ -1,11 +1,12 @@
 .payment-btn {
   margin-top: 30px;
   width: 180px;
-  height: 30px;
+  height: 40px;
   color: aliceblue;
   border: none;
   border-radius: 8px;
-  background-color: rgb(105, 104, 104);
+  /* background-color: rgb(105, 104, 104); */
+  background-color: #24a0ed;
 }
 .shippingMethod {
   margin-top: 20px;
@@ -77,6 +78,33 @@
 .spansize {
   font-size: 18px;
 }
-.rightalign {
+/* .rightalign {
   margin-left: 400px;
+} */
+.shippingTable {
+  max-width: 100%;
+  text-align: left;
+}
+.setmargin {
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+.shippingradio {
+  max-width: 20px;
+  text-align: left;
+  min-width: 40px;
+  margin-right: 80px;
+}
+.shippingTablemid {
+  text-align: right;
+}
+.linkaddress {
+  margin-left: 100px;
+  color: #24a0ed;
+}
+.shippingtag {
+  color: azure;
+  text-decoration: none;
 }

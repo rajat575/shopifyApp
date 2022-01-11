@@ -5,6 +5,8 @@ ul {
 }
 .navbar {
   background-color: #244761;
+  position: fixed;
+  top: 0%;
   width: 100%;
 }
 

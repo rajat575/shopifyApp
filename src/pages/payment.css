@@ -3,3 +3,89 @@
   font-size: 35px;
   margin-bottom: 500px;
 }
+.linkaddress {
+  text-align: right;
+}
+.paymentTable {
+  margin-left: 0%;
+}
+.chngaddress {
+  text-align: center;
+  /* color: #24a0ed; */
+}
+.linkcolor {
+  color: #24a0ed;
+}
+.headerpayment {
+  margin-top: 40px;
+  margin-left: 210px;
+}
+.paymentcred {
+  padding: 10px;
+  margin-top: 20px;
+  border: rgb(207, 207, 207) 2px solid;
+  border-radius: 18px;
+  margin-left: 200px;
+  max-width: 800px;
+  margin-bottom: 50px;
+}
+.cardnumber {
+  /* padding: 10px; */
+  padding-left: 10px;
+  height: 40px;
+  font-size: 20px;
+  margin-top: 10px;
+  border: rgb(207, 207, 207) 2px solid;
+  border-radius: 5px;
+  /* margin-left: 10px; */
+  margin-right: 10px;
+  /* margin-left: 200px; */
+  width: 98%;
+  /* margin-bottom: 20px; */
+}
+.carddate1 {
+  padding-left: 10px;
+  height: 40px;
+  font-size: 20px;
+  margin-top: 10px;
+  border: rgb(207, 207, 207) 2px solid;
+  border-radius: 5px;
+  /* margin-left: 10px; */
+  margin-right: 5px;
+  /* margin-left: 200px; */
+  width: 46.9%;
+  /* margin-bottom: 20px; */
+}
+.carddate2 {
+  padding-left: 10px;
+  height: 40px;
+  font-size: 20px;
+  margin-top: 10px;
+  border: rgb(207, 207, 207) 2px solid;
+  border-radius: 5px;
+  /* margin-left: 10px; */
+  margin-left: 14px;
+  /* margin-left: 200px; */
+  width: 46.9%;
+  /* margin-bottom: 20px; */
+}
+.paybutton {
+  padding-left: 10px;
+  height: 40px;
+  margin-top: 10px;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: #24a0ed;
+}
+.paybutton:hover {
+  padding-left: 10px;
+  height: 40px;
+  margin-top: 10px;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: #3c9bd6;
+}

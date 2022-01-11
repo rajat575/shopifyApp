@@ -40,6 +40,7 @@ const Cart = () => {
 
   const addingDiscount = async () => {
     await adddiscount(cart.id, code);
+    setdiscount("");
   };
   const removedisc = async () => {
     await removediscount(cart.id);
@@ -118,7 +119,7 @@ const Cart = () => {
           <div className="TotalPrice">
             <h1>Sub Total:</h1>
             <h2>
-              {cart?.currencyCode} : {cart?.totalPrice}
+              {cart?.currencyCode} : {cart?.subtotalPrice}
             </h2>
             {/* <a href={cart?.webUrl}>emergency link</a> */}
             <button className="checkout" onClick={billaddress}>

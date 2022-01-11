@@ -21,3 +21,7 @@
   border: none;
   width: 22%;
 }
+.linktag {
+  color: black;
+  text-decoration: none;
+}

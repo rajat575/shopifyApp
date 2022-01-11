@@ -34,10 +34,12 @@ export class ShopifyProvider extends Component {
     cart: {},
     collhandle: [],
     query: {},
-    discode:{},
-    shippingmethod:{},
-    shippingPrice:{}
-
+    discode: {},
+    shippingmethod: {},
+    shippingPrice: {},
+    res: {},
+    filterProduct: {},
+    meta: {},
   };
 
   componentDidMount() {
@@ -101,7 +103,6 @@ export class ShopifyProvider extends Component {
     const productdescri = await client.product.fetchByHandle(handle);
     this.setState({ productdescri: productdescri });
   };
-
   collectionhandle = async (handle) => {
     const collhandle = await client.collection.fetchByHandle(handle);
     this.setState({ collhandle: collhandle });
@@ -122,7 +123,10 @@ export class ShopifyProvider extends Component {
   };
 
   updateaddress = async (cartId, shippingAddress) => {
-    const cart = await client.checkout.updateShippingAddress(cartId, shippingAddress);
+    const cart = await client.checkout.updateShippingAddress(
+      cartId,
+      shippingAddress
+    );
     this.setState({ cart: cart });
   };
 
@@ -210,97 +214,185 @@ export class ShopifyProvider extends Component {
     console.log("*******************");
   };
 
-
-
-
-  getShippingMethod = async() => {
-
+  getShippingMethod = async () => {
     const query = gql`
-
-    query checkout($checkoutid: ID!){
-
+      query checkout($checkoutid: ID!) {
         node(id: $checkoutid) {
-
           ... on Checkout {
+            totalTax
 
-              totalTax
+            taxesIncluded
 
-              taxesIncluded
+            taxExempt
 
-              taxExempt
+            subtotalPrice
 
-              subtotalPrice
+            totalPrice
 
-              totalPrice
+            email
 
-              email
+            createdAt
 
-              createdAt
+            requiresShipping
 
-              requiresShipping
+            availableShippingRates {
+              ready
 
-              availableShippingRates {
+              shippingRates {
+                handle
 
-                ready
-
-                shippingRates {
-
-                  handle
-
-                  priceV2 {
-
-                    amount
-
-                  }
-
-                  title
-
+                priceV2 {
+                  amount
                 }
 
+                title
               }
-
+            }
           }
-
+        }
       }
+    `;
 
-    }
+    const res = await apolloClient.query({
+      query: query,
+      variables: {
+        checkoutid: localStorage.cart_id,
+      },
+    });
 
-  `
+    console.log("*******checkoutid*******");
 
-   const cart=await apolloClient.query({query: query, variables: {
+    this.setState({ res: res });
 
-    checkoutid: localStorage.cart_id
+    console.log("*******************");
+  };
 
-  }}) ;
+  adddiscount = async (cartId, discountCode) => {
+    const cart = await client.checkout.addDiscount(cartId, discountCode);
+    this.setState({ cart: cart });
+  };
 
-      console.log("*******checkoutid*******");
+  removediscount = async (cartId) => {
+    const cart = await client.checkout.removeDiscount(cartId);
+    this.setState({ cart: cart });
+  };
 
-      this.setState({shippingmethod:cart})
+  setPriceShipping = (shippingPrice) => {
+    this.setState({ shippingPrice: shippingPrice });
+  };
 
-      console.log("*******************");
+  getmeta = async () => {
+    const query = gql`
+      query metafieldStorefrontVisibility {
+          productByHandle(handle: "") {
+            metafield(namespace: "my_fields", key: "part_number") {
+              value
+              type
+            }
+          }
+        }
+      }
+    `;
+    const meta = await apolloClient.query({
+      query: query,
+      variables: {},
+    });
+    this.setState({ meta: meta });
+  };
 
-     
+  metafield = async () => {
+    const mutation = gql`
+      mutation ($input: MetafieldStorefrontVisibilityInput!) {
+        metafieldStorefrontVisibilityCreate(input: $input) {
+          metafieldStorefrontVisibility {
+            id
+          }
+          userErrors {
+            field
+            message
+          }
+        }
+      }
+    `;
 
-  }
+    const meta = await apolloClient.mutate({
+      mutation: mutation,
+      variables: {
+        input: {
+          namespace: "myfields",
+          key: "part_number",
+        },
+      },
+    });
+    console.log(meta);
+  };
 
-  adddiscount=async(cartId,discountCode)=>{
-    const cart= await client.checkout.addDiscount(cartId,discountCode )
-    this.setState({cart:cart})
-  
-  }
+  updateShippingLine = async (shippingHandle) => {
+    const mut = gql`
+      mutation checkoutShippingLineUpdate(
+        $checkoutId: ID!
+        $shippingRateHandle: String!
+      ) {
+        checkoutShippingLineUpdate(
+          checkoutId: $checkoutId
+          shippingRateHandle: $shippingRateHandle
+        ) {
+          checkout {
+            id
+          }
+          checkoutUserErrors {
+            code
+            field
+            message
+          }
+        }
+      }
+    `;
 
-  removediscount=async(cartId)=>{
-    const cart =await client.checkout.removeDiscount(cartId);
-    this.setState({cart:cart})
-  }
+    const res = await apolloClient.mutate({
+      mutation: mut,
+      variables: {
+        checkoutId: localStorage.cart_id,
+        shippingRateHandle: shippingHandle,
+      },
+    });
 
-  setPriceShipping=(shippingPrice)=>{
-    this.setState({shippingPrice:shippingPrice})
-  }
+    console.log(res);
+  };
 
-  
+  searchProduct = (searchString) => {
+    const filterProduct = this.state.products.filter((name) =>
+      name.title.toLowerCase().includes(searchString.toLowerCase())
+    );
+    this.setState({ filterProduct: filterProduct });
+  };
 
-
+  // creditCard=async(card)=>{
+  //   const mutation=gql`
+  //   mutation checkoutCompleteWithCreditCardV2($checkoutId: ID!, $payment: CreditCardPaymentInputV2!) {
+  //     checkoutCompleteWithCreditCardV2(checkoutId: $checkoutId, payment: $payment) {
+  //       checkout {
+  //         id
+  //       }
+  //       checkoutUserErrors {
+  //         code
+  //         field
+  //         message
+  //       }
+  //       payment {
+  //         id
+  //       }
+  //     }
+  //   }
+  //   `
+  //   const res= await apolloClient.mutate({
+  //     mutation:mutation,variables:{
+  //       checkoutId:localStorage.cart_id,
+  //       payment:card
+  //     }
+  //   });
+  //   console.log(res)
+  // }
 
   render() {
     return (
@@ -317,10 +409,15 @@ export class ShopifyProvider extends Component {
           updatequantity: this.updatequantity,
           updateaddress: this.updateaddress,
           testApollo: this.testApollo,
-          adddiscount:this.adddiscount,
-          removediscount:this.removediscount,
-          getShippingMethod:this.getShippingMethod,
-          setPriceShipping:this.setPriceShipping
+          adddiscount: this.adddiscount,
+          removediscount: this.removediscount,
+          getShippingMethod: this.getShippingMethod,
+          setPriceShipping: this.setPriceShipping,
+          updateShippingLine: this.updateShippingLine,
+          searchProduct: this.searchProduct,
+          metafield: this.metafield,
+          getmeta: this.getmeta,
+          // creditCard:this.creditCard
         }}
       >
         {this.props.children}

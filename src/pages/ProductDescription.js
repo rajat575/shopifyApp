@@ -7,7 +7,8 @@ const ProductDescription = () => {
   const LetsGo = useNavigate();
   const [quantity, setquantity] = useState(0);
   const { handle } = useParams();
-  const { productdesc, productdescri, additem } = useContext(shopContext);
+  const { productdesc, productdescri, additem, meta, cart } =
+    useContext(shopContext);
   useEffect(() => {
     productdesc(handle);
   }, [productdesc, handle]);
@@ -20,13 +21,14 @@ const ProductDescription = () => {
     let value = quantity - 1;
     setquantity(value);
   };
-  const buynow = () => {
-    LetsGo("/billingAddress");
-  };
+  // const buynow = () => {
+  //   LetsGo("/billingAddress");
+  // };
   return (
     <div className="desc">
-    
       <h1>Product Description</h1>
+      {console.log(meta)}
+      {console.log(cart)}
       <hr />
       <div className="prodDesc">
         <h2>{productdescri.title}</h2>
@@ -50,9 +52,7 @@ const ProductDescription = () => {
             Add to cart
           </Link>
         </button>
-        <div>
-          <button onClick={buynow}>Buy Now</button>
-        </div>
+        <div>{/* <button onClick={buynow}>Buy Now</button> */}</div>
       </div>
     </div>
   );

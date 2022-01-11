@@ -12,6 +12,7 @@ import About from "./pages/About";
 import BillingAddress from "./pages/billingaddress";
 import Payment from "./pages/payment";
 import Shipping from "./pages/Shipping";
+import Search from "./pages/Search";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/shippingAddress" element={<BillingAddress />}></Route>
           <Route path="/paymentpage" element={<Payment />}></Route>
           <Route path="/shippingMethod" element={<Shipping />}></Route>
+          <Route path="/Search/:handle" element={<Search />}></Route>
         </Routes>
 
         <Footer></Footer>
